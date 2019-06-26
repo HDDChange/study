@@ -37,8 +37,10 @@ public class ReenterLockDemo extends Thread {
         ReenterLockDemo reenterLockDemo1 = new ReenterLockDemo(1);
         ReenterLockDemo reenterLockDemo2 = new ReenterLockDemo(2);
         ReenterLockDemo reenterLockDemo3 = new ReenterLockDemo(3);
+        REENTRANT_LOCK.lock();
         reenterLockDemo1.start();
         reenterLockDemo2.start();
         reenterLockDemo3.start();
+        REENTRANT_LOCK.unlock();
     }
 }
