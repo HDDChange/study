@@ -6,6 +6,12 @@ package study.leetcode.month2.day2;
  **/
 public class Solution {
 
+    /**
+     *
+     * @param dividend
+     * @param divisor
+     * @return
+     */
     public int divide(int dividend, int divisor) {
         if (dividend == 0) {
             return 0;
@@ -16,6 +22,7 @@ public class Solution {
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
             return Integer.MAX_VALUE;
         }
+        // 拿符号位
         boolean flag1 = (dividend >>> 31) != (divisor >>> 31);
         boolean flag2 = false;
         if (dividend == Integer.MIN_VALUE) {
