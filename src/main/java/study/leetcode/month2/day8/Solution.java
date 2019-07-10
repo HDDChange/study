@@ -35,47 +35,40 @@ public class Solution {
      * @return 索引
      */
     public int search(int[] nums, int target) {
+
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        // 时间复杂度 log(n)
-        int start = 0, end = nums.length - 1, mid;
-        while (true) {
-            // 中间数
-            mid = start + ((end - start) >> 1);
-            if (nums[mid] > nums[start]) {
-                if (nums[end] == target){
-                    return end;
-                }
-                if (target > nums[mid]) {
-                    start = mid;
-                } else if (target < nums[mid]) {
-                    end = mid;
-                } else {
-                    return mid;
-                }
-            } else  {
-                if (nums[start] == target){
-                    return start;
-                }
-                if (target > nums[mid]) {
-                    end = mid;
-                } else if (target < nums[mid]) {
-                    start = mid;
-                } else {
-                    return mid;
-                }
+        int start = 0, end = nums.length - 1, div = nums[nums.length - 1];
+
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return mid;
             }
-            if (start + 1 >= end) {
-                if (target == nums[end]) {
-                    return end;
+            //如果在同一边，按照正常的二分搜索方向
+            if ((nums[mid] > div && target > div) || (nums[mid] <= div && target <= div)) {
+                if (nums[mid] > target) {
+                    end = mid;
+                } else {
+                    start = mid;
                 }
-                if (target == nums[start]) {
-                    return start;
+            } else {
+                //如果在翻转的不同边，反转二分搜索的方向
+                if (nums[mid] > target) {
+                    start = mid;
+                } else {
+                    end = mid;
                 }
-                return -1;
             }
         }
+        if (nums[start] == target) {
+            return start;
+        }
+        if (nums[end] == target) {
+            return end;
+        }
+        return -1;
 
     }
 
@@ -83,7 +76,7 @@ public class Solution {
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        int search = solution.search(new int[]{5,1,3}, 3);
+        int search = solution.search(new int[]{5, 1, 3}, 3);
 
         System.out.println(search);
     }
