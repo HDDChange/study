@@ -27,8 +27,8 @@ public class Solution {
      * 链接：https://leetcode-cn.com/problems/valid-sudoku
      * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      *
-     * @param board
-     * @return
+     * @param board 给定的数独
+     * @return 是否为合法法的数独
      */
     public boolean isValidSudoku(char[][] board) {
         Map<Character, Integer> col = new HashMap<>(9);
