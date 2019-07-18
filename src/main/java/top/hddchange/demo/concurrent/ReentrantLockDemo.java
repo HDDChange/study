@@ -8,11 +8,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author huangqiaowei
  * @date 2019-06-23 17:50
  **/
-public class ReenterLockDemo extends Thread {
+public class ReentrantLockDemo extends Thread {
 
     private int i;
 
-    public ReenterLockDemo(int i) {
+    public ReentrantLockDemo(int i) {
         this.i = i;
     }
 
@@ -34,9 +34,9 @@ public class ReenterLockDemo extends Thread {
     }
 
     public static void main(String[] args) {
-        ReenterLockDemo reenterLockDemo1 = new ReenterLockDemo(1);
-        ReenterLockDemo reenterLockDemo2 = new ReenterLockDemo(2);
-        ReenterLockDemo reenterLockDemo3 = new ReenterLockDemo(3);
+        ReentrantLockDemo reenterLockDemo1 = new ReentrantLockDemo(1);
+        ReentrantLockDemo reenterLockDemo2 = new ReentrantLockDemo(2);
+        ReentrantLockDemo reenterLockDemo3 = new ReentrantLockDemo(3);
         REENTRANT_LOCK.lock();
         reenterLockDemo1.start();
         reenterLockDemo2.start();
