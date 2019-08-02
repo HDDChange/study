@@ -55,7 +55,6 @@ public class Solution {
                 } else {
                     break;
                 }
-
             }
             // 出栈
             if (stack.size() == k) {
