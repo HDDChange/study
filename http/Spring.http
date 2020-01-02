@@ -1,0 +1,10 @@
+### application/json
+POST {{baseUrl}}/demo/demo
+Accept: */*
+Content-Type: application/json
+
+{     "key":"key",     "value":"value" }
+
+###
+POST {{baseUrl}}/demo/demo
+Accept:
